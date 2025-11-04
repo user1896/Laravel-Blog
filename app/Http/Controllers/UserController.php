@@ -33,8 +33,8 @@ class UserController extends Controller
         }
 
         return back()->withErrors([
-            'email' => 'The provided credentials do not match our records.',
-        ])->onlyInput('email'); // Redirect back with error message
+            'failledLogin' => 'The provided credentials do not match our records.',
+        ])->onlyInput('failledLogin'); // Redirect back with error message
     }
 
     public function logout(Request $request)

@@ -8,7 +8,11 @@
 
 	@auth
 
-	<p>You're logged in.</p>
+	@if (session('success'))
+    <div class="alert alert-success">
+        {{ session('success') }}
+    </div>
+	@endif
 	<form action="/logout" method="POST">
 		@csrf
 		<button>Logout</button>
@@ -18,11 +22,25 @@
 		<h2>Create a Post</h2>
 		<form action="/create-post" method="POST">	
 			@csrf
+			
+			@error('title')
+				<div class="text-danger">{{ $message }}</div>
+			@enderror
 			<input name="title" type="text" placeholder="Post Title">
+
+			@error('body')
+				<div class="text-danger">{{ $message }}</div>
+			@enderror
 			<textarea name="body" placeholder="Post Body..."></textarea>
+
 			<button>Create Post</button>
 		</form>
 	</div>
+	@if (session('successPostCreation'))
+    <div class="alert alert-success">
+        {{ session('successPostCreation') }}
+    </div>
+	@endif
 
 	@else
 
@@ -30,19 +48,44 @@
 		<h2>Register</h2>
 		<form action="/register" method="POST">
 			@csrf
+
+			@error('name')
+				<div class="text-danger">{{ $message }}</div>
+				@enderror
 			<input name="name" type="text" placeholder="name">
+
+			@error('email')
+				<div class="text-danger">{{ $message }}</div>
+			@enderror
 			<input name="email" type="text" placeholder="email">
+
+			@error('password')
+				<div class="text-danger">{{ $message }}</div>
+			@enderror
 			<input name="password" type="password" placeholder="password">
+
 			<button>Register</button>
 		</form>
 	</div>
 
+	@error('failledLogin')
+		<div class="text-danger">{{ $message }}</div>
+	@enderror
 	<div style="border: 3px solid black;">
 		<h2>Login</h2>
 		<form action="/login" method="POST">
 			@csrf
+
+			@error('loginname')
+				<div class="text-danger">{{ $message }}</div>
+			@enderror
 			<input name="loginname" type="text" placeholder="name">
+
+			@error('loginpassword')
+				<div class="text-danger">{{ $message }}</div>
+			@enderror
 			<input name="loginpassword" type="password" placeholder="password">
+
 			<button>Login</button>
 		</form>
 	</div>

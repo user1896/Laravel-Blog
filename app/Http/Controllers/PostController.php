@@ -26,6 +26,6 @@ class PostController extends Controller
         // Create a new post associated with the authenticated user
         Post::create($incomingFields); // Create a new post record in the database
 
-        return redirect('/')->with('success', 'Post created successfully!'); // Redirect to homepage with success message
+        return redirect('/')->with('successPostCreation', 'Post created successfully!'); // Redirect to homepage with success message
     }
 }
