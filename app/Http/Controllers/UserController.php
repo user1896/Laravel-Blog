@@ -25,7 +25,7 @@ class UserController extends Controller
         ];
         
         // Now we authenticate using these fields.
-        if (auth()->guard()->attempt($incomingFields)) {
+        if (auth()->attempt($incomingFields)) {
             // Authentication passed...
 
             $request->session()->regenerate(); // Regenerate session to prevent fixation
@@ -39,7 +39,7 @@ class UserController extends Controller
 
     public function logout(Request $request)
     {
-        auth()->guard()->logout(); // Log the user out
+        auth()->logout(); // Log the user out
         $request->session()->invalidate(); // Invalidate the session
         $request->session()->regenerateToken(); // Regenerate CSRF token
         return redirect('/')->with('success', 'You have been logged out successfully.'); // Redirect to homepage with success message

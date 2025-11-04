@@ -7,12 +7,25 @@
 <body>
 
 	@auth
+
 	<p>You're logged in.</p>
 	<form action="/logout" method="POST">
 		@csrf
 		<button>Logout</button>
 	</form>
+
+	<div style="border: 3px solid black;">
+		<h2>Create a Post</h2>
+		<form action="/create-post" method="POST">	
+			@csrf
+			<input name="title" type="text" placeholder="Post Title">
+			<textarea name="body" placeholder="Post Body..."></textarea>
+			<button>Create Post</button>
+		</form>
+	</div>
+
 	@else
+
 	<div style="border: 3px solid black;">
 		<h2>Register</h2>
 		<form action="/register" method="POST">
@@ -33,6 +46,7 @@
 			<button>Login</button>
 		</form>
 	</div>
+
 	@endauth
 
 </body>
