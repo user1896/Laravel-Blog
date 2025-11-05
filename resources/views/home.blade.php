@@ -46,7 +46,7 @@
 		<h2>All Posts</h2>
 		@foreach ($posts as $post)
 			<div style="background-color: gray; margin: 10px; padding: 5px 10px 5px 20px;">
-				<h3>{{ $post->title }}</h3>
+				<h3>{{ $post->title }} by {{$post->user->name}} </h3>
 				<p>{{ $post->body }}</p>
 				<p><a href="/edit-post/{{$post->id}}">Edit</a></p>
 				{{-- delete a post --}}
