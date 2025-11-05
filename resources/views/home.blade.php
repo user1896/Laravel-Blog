@@ -42,6 +42,16 @@
     </div>
 	@endif
 
+	<div style="border: 3px solid black;">
+		<h2>All Posts</h2>
+		@foreach ($posts as $post)
+			<div style="background-color: gray; margin: 10px; padding: 5px 10px 5px 20px;">
+				<h3>{{ $post->title }}</h3>
+				<p>{{ $post->body }}</p>
+			</div>
+		@endforeach
+	</div>
+
 	@else
 
 	<div style="border: 3px solid black;">
