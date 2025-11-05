@@ -46,8 +46,9 @@ class User extends Authenticatable
         ];
     }
 
-    // public function usersCoolPosts()
-    // {
-    //     return $this->hasMany(Post::class, 'user_id', 'id'); // A user can have many posts
-    // }
+    public function usersCoolPosts()
+    {
+        return $this->hasMany(Post::class, 'user_id', 'id'); // A user can have many posts
+        // hasMany returns a one-to-many relationship instance
+    }
 }

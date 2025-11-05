@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Models\Post;
 
 Route::get('/', function () {
-    $posts = Post::latest()->get();
+    $posts = auth()->check() ? auth()->user()->usersCoolPosts()->latest()->get() : []; // if user is authenticated, get their posts, else return empty array
     return view('home', ['posts' => $posts]);
 });
 
