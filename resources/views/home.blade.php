@@ -49,6 +49,12 @@
 				<h3>{{ $post->title }}</h3>
 				<p>{{ $post->body }}</p>
 				<p><a href="/edit-post/{{$post->id}}">Edit</a></p>
+				{{-- delete a post --}}
+				<form action="/delete-post/{{$post->id}}" method="POST">
+					@csrf
+					@method('DELETE')
+					<button>Delete</button>
+				</form>
 			</div>
 		@endforeach
 	</div>

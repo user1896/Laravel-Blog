@@ -18,3 +18,4 @@ Route::post('/login', [UserController::class, 'login']);
 Route::post('/create-post', [PostController::class, 'createPost']);
 Route::get('/edit-post/{post}', [PostController::class, 'showEditScreen']); // Show edit form for a specific post
 Route::put('/edit-post/{post}', [PostController::class, 'updatePost']); // Handle post edit
+Route::delete('/delete-post/{post}', [PostController::class, 'deletePost']); // Handle post deletion

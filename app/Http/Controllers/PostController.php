@@ -7,6 +7,17 @@ use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
+    public function deletePost(Post $post) // $post is automatically resolved by Laravel based on the {post} route parameter.
+    {
+        if (auth()->id() != $post->user_id) {
+            abort(403); // If the authenticated user is not the owner of the post, abort with a 403 Forbidden response.
+        }
+
+        $post->delete(); // Delete the specified post from the database
+
+        return redirect('/')->with('successPost', 'Post deleted successfully!'); // Redirect to homepage with success message
+    }
+
     public function updatePost(Request $request, Post $post) // $post is automatically resolved by Laravel based on the {post} route parameter, and $request contains the incoming HTTP request data.
     {
         if (auth()->id() != $post->user_id) {
